@@ -1,5 +1,6 @@
 <template>
   <div>
+    <b-breadcrumb :items="items"></b-breadcrumb>
     <h1>Review notes</h1>
     <ReviewNotes :reviewNotes="reviewNotes" />
     <LoadMore />

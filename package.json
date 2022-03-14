@@ -1,0 +1,28 @@
+{
+  "name": "review-notes",
+  "version": "1.0.0",
+  "description": "-----Description------\r We are building a new application that has wide range of functionalities related to audit. One of the features of the application is called \"Review notes\" (See the mockup file). \r They could be explained as a sticky notes someone can create to perform some tasks or act as a memory. \r They can be composed by different properties such as type, priority, status, creator, responsible/assignees, etc.\r The review notes can be accessed by a specific URL, ex. /review-notes, where the user will get a list of them as shown at the attached image. \r This list can be also filtered using some predefined filters. \r To provide a good experience and reduce the load time, the initial number of items which can be seen within the list of review notes is 10.",
+  "main": "index.js",
+  "scripts": {
+    "client-install": "npm install --prefix frontend",
+    "server-install": "npm install --prefix backEnd",
+    "server": "node backEnd/src/index.js",
+    "client": "npm run serve --prefix frontend",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "concurrently \"npm run server-install\" \"npm run client-install\"",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mohamed1204/review-notes.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mohamed1204/review-notes/issues"
+  },
+  "homepage": "https://github.com/Mohamed1204/review-notes#readme",
+  "devDependencies": {
+    "concurrently": "^7.0.0"
+  }
+}

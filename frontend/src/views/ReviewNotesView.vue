@@ -30,8 +30,8 @@
       />
     </div>
 
-    <ReviewNotes :reviewNotes="filteredReviewNotes" />
-    <LoadMore />
+    <ReviewNotes  :reviewNotes="filteredReviewNotes" />
+    <LoadMore @load-more="loadMore" v-if="hasMore" />
   </div>
 </template>
 
@@ -74,10 +74,28 @@ export default {
       priority: "",
       typeFilterActiveIndex : -1,
       priorityFilterActiveIndex : -1,
+      hasMore: false,
+      limit: 3,
+      offset: 0,
     };
   },
 
   methods: {
+    async loadMore(){
+      this.offset = this.offset + this.limit
+      await this.fetchReviewNotes()
+    },
+    async fetchReviewNotes() {
+      const res = await fetch('http://localhost:3000/api/v1/reviewNotes/'+this.offset+'/'+this.limit)
+      const data = await res.json()
+
+      var copy = JSON.parse(JSON.stringify(this.reviewNotes));
+      copy.push(...data.reviewNotes);
+      this.reviewNotes = copy
+
+      this.hasMore= data.hasMore
+      this.filterArray();
+    },
     reset() {
       console.log("clearing..");
       (this.filteredReviewNotes = this.reviewNotes), (this.date = null);
@@ -186,8 +204,11 @@ export default {
     },
   },
 
-  created() {
-    (this.reviewNotes = [
+  async created() {
+     await this.fetchReviewNotes()
+    //this.filterArray()
+  },
+    /*(this.reviewNotes = [
       {
         assignees: [
           {
@@ -868,8 +889,8 @@ export default {
             $date: "2021-09-14T07:59:55.883Z"
           }
         }
-      ]);
-  }
+      ]);*/
+  
 };
 </script>
 

@@ -1,6 +1,6 @@
 <template>
 <div>
-<span>{{text}}</span> 
+<span :style="{ 'background-color': color }">{{text}}</span> 
 </div>
    
 </template>
@@ -16,7 +16,7 @@ export default {
 </script>
 <style scoped>
 span{
-   background-color: rgb(0, 200, 230);
+   background-color: white;
    padding: 4px;
    border-radius: 5px;   
 }

@@ -15,11 +15,11 @@ export default {
 div{
     display: flex;
     justify-content: center;    
-    background-color: rgb(0, 247, 255);
+    background-color: rgb(217, 246, 255);
     border-radius: 5px
 }
 span{
-  color: steelblue; 
+  color:  rgb(9, 119, 245); 
    padding: 15px;
    text-decoration:underline;
    cursor: pointer;

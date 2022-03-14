@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div  v-if="show" id="overlay">
+      <i id="text" class="fa fa-refresh fa-spin"></i>
+    </div>
     <BreadCrumb :URL1="currentRouteName" />
     <div id="titleAndButton">
       <h1>Review notes</h1>
@@ -77,6 +80,7 @@ export default {
       hasMore: false,
       limit: 3,
       offset: 0,
+      show:false,
     };
   },
 
@@ -86,6 +90,7 @@ export default {
       await this.fetchReviewNotes()
     },
     async fetchReviewNotes() {
+      this.show = true
       const res = await fetch('http://localhost:3000/api/v1/reviewNotes/'+this.offset+'/'+this.limit)
       const data = await res.json()
 
@@ -95,6 +100,8 @@ export default {
 
       this.hasMore= data.hasMore
       this.filterArray();
+
+      this.show=false;
     },
     reset() {
       console.log("clearing..");
@@ -155,7 +162,7 @@ export default {
       }
     },
     filterArray() {
-      
+      this.show=true
       this.filteredReviewNotes = this.reviewNotes.filter(reviewNote => {
         return (
           reviewNote.title
@@ -170,7 +177,9 @@ export default {
           //
           //date
         );
+        
       });
+      this.show=false
     },
     quickSearchFilterChanged(quickSearchNewVal) {
       this.quickSearch = quickSearchNewVal;
@@ -910,5 +919,28 @@ export default {
 
 #titleAndButton > div {
   margin: 10px;
+}
+
+#overlay {
+  position: fixed;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+#text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 50px;
+  color: white;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
 }
 </style>

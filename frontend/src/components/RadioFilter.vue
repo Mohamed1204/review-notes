@@ -71,6 +71,7 @@ export default {
   padding: 8px;
   cursor: pointer;
   border-radius: 5px;
+  border: blue solid 1px
 }
 
 #spanActive {

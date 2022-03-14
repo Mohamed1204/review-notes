@@ -2,6 +2,7 @@ npm install -g concurrently
 npm install -g @vue/cli
 
 
+
 And in the root folder of the project:
 
 install packages

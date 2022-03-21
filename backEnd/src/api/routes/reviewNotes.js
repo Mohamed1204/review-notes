@@ -1,6 +1,6 @@
 const express = require("express");
 
-const reviewNotesController = require('./controllers/reviewNote/index')
+const reviewNotesController = require('../controllers/reviewNote/index')
 const reviewNotesRouter = express.Router();
 
 

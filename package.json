@@ -24,5 +24,8 @@
   "homepage": "https://github.com/Mohamed1204/review-notes#readme",
   "devDependencies": {
     "concurrently": "^7.0.0"
+  },
+  "dependencies": {
+    "typescript": "^4.6.2"
   }
 }

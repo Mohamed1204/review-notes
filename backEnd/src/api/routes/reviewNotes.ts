@@ -1,8 +1,8 @@
-const express = require("express");
 
-const reviewNotesController = require('../controllers/reviewNote/index')
-const reviewNotesRouter = express.Router();
+import * as reviewNotesController from '../controllers/reviewNote/index'
 
+import { Router, Request, Response } from "express";
+const reviewNotesRouter = Router();
 
 
 
@@ -25,4 +25,4 @@ reviewNotesRouter.get('/:offset/:limit', async (req, res) => {
 });
 
 
-module.exports = reviewNotesRouter
+export default reviewNotesRouter;

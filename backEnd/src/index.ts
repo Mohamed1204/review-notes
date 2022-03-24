@@ -1,15 +1,12 @@
+import routes from "./api/routes"
 
-let routes = require('../src/api/routes') 
-
-import express, { Request, Response } from "express";
+import express, { Request, Response, Application } from "express";
 
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
-const app = express();
+const app : Application = express();
 const port = 3000;
-
-
 
 app.use(bodyParser.json());
 
@@ -18,11 +15,14 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", async (req: Request, res: Response) : Promise<Response>  => {
-  return res.status(200).send({
-    message: `Welcome to the cookbook API! \n Endpoints available at http://localhost:${port}/api/v1`
-  });
-});
+app.get(
+  "/",
+  async (req: Request, res: Response): Promise<Response> => {
+    return res.status(200).send({
+      message: `Welcome to the cookbook API! \n Endpoints available at http://localhost:${port}/api/v1`
+    });
+  }
+);
 
 try {
   app.listen(port, () => {

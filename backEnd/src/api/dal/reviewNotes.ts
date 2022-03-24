@@ -1,18 +1,18 @@
-module.exports= {
 
-getAll : async (limit, offset) => {
+
+export const getAll = async (limit: number, offset:number) => {
   console.log(reviewNotes.length)
 
-  result = reviewNotes.slice(offset, (limit+offset));
+  //result = reviewNotes.slice(offset, (limit+offset));
 
   var hasMore = true
-  if((result.length + offset)>=reviewNotes.length-1){
+  /*if((result.length + offset)>=reviewNotes.length-1){
     var hasMore = false
-  }  
+  }*/  
 
-  return await {reviewNotes:result, hasMore:hasMore}
+  return await {/*reviewNotes:result,*/ hasMore:hasMore}
 }
-}
+
 
 const reviewNotes = [
   {
